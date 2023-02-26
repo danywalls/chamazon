@@ -36,6 +36,7 @@ export class ProductsService {
 
   create(productDto: any) {
     this.products.push(productDto);
+    return productDto;
   }
 
   remove(id: string) {
