@@ -12,4 +12,18 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: example
+  nest-api:
+    hostname: nest-api
+    container_name: nest-api
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
+    command: npm run start
+    depends_on:
+      - db
 
