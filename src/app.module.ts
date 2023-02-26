@@ -8,12 +8,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     ProductsModule,
     TypeOrmModule.forRoot({
-      type: 'postgres',
+      type: 'mysql',
       host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'pass123',
-      database: 'postgres',
+      port: 3306,
+      username: 'root',
+      password: 'example',
+      database: 'example',
       autoLoadEntities: true,
       synchronize: true,
     }),
