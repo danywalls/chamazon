@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Category } from './category.entity';
 
 @Entity()
 export class Product {
@@ -11,6 +18,9 @@ export class Product {
   @Column()
   price: string;
 
-  @Column('json', { nullable: true })
-  categories: string[];
+  @JoinTable()
+  @ManyToMany(() => Category, (category) => category.products, {
+    cascade: true,
+  })
+  categories: Category[];
 }
